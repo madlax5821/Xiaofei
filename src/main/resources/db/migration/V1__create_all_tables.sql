@@ -3,7 +3,7 @@ CREATE TABLE departments (
     id                BIGSERIAL NOT NULL,
     name              VARCHAR(30) not null unique,
     description       VARCHAR(150),
-    location          VARCHAR(100)
+    location          VARCHAR(100)dsadasdadasdd
 );
 ALTER TABLE departments ADD CONSTRAINT department_pk PRIMARY KEY ( id );
 CREATE TABLE employees (

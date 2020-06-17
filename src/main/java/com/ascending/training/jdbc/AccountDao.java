@@ -1,4 +1,4 @@
-package com.ascending.training.repository;
+package com.ascending.training.jdbc;
 
 import com.ascending.training.model.Account;
 

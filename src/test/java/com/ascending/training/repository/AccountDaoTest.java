@@ -1,5 +1,6 @@
 package com.ascending.training.repository;
 
+import com.ascending.training.jdbc.AccountDao;
 import com.ascending.training.model.Account;
 import org.junit.Test;
 

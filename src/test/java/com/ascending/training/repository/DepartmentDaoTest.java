@@ -1,17 +1,23 @@
 package com.ascending.training.repository;
 
 import com.ascending.training.model.Department;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
 public class DepartmentDaoTest {
+    private DepartmentDao departmentDao;
+    @Before
+    public void setUp(){
+        departmentDao = new DepartmentDaoImpl();
+    }
+
     @Test
     public void getDepartmentsTest(){
-        DepartmentDao departmentJDBCDao = new DepartmentDao();
-        List<Department> departmentList = departmentJDBCDao.getDepartments();
-        assertEquals(4,departmentList.size());
+        List<Department> departments = departmentDao.getDepartments();
+
     }
+
 }
+

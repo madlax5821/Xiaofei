@@ -1,6 +1,6 @@
 package com.ascending.training.repository;
 
-import com.ascending.training.model.Department;
+import com.ascending.training.model.Account;
 import com.ascending.training.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -9,24 +9,21 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
-public class DepartmentDaoImpl implements DepartmentDao {
+public class AccountDaoImpl implements AccountDao {
     private Logger logger = LoggerFactory.getLogger(getClass());
-
     @Override
-    public Department save(Department department) {
+    public Account save(Account account) {
         Transaction transaction = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
-            session.save(department);
+            session.save(account);
             session.close();
-            return department;
+            return account;
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();
             logger.error("failure to insert record", e);
@@ -37,11 +34,11 @@ public class DepartmentDaoImpl implements DepartmentDao {
 
 
     @Override
-    public List<Department> getDepartments() {
-        String hql = "SELECT d FROM Department d";
+    public List<Account> getAccounts() {
+        String hql = "SELECT a FROM Account a";
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session s = sessionFactory.openSession();
-        List<Department> result = new ArrayList<>();
+        List<Account> result = new ArrayList<>();
 //        try {/
         Query query = s.createQuery(hql);
         result = query.list();
@@ -54,15 +51,15 @@ public class DepartmentDaoImpl implements DepartmentDao {
     }
 
     @Override
-    public boolean delete(Department dep) {
-        String hql = "DELETE Department as dep where dep.id = :Id";
+    public boolean delete(Account acc) {
+        String hql = "DELETE Account as acc where acc.id = :Id";
         int deletedCount = 0;
         Transaction transaction = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
-            Query<Department> query = session.createQuery(hql);
-            query.setParameter("Id", dep.getId());
+            Query<Account> query = session.createQuery(hql);
+            query.setParameter("Id", acc.getId());
             deletedCount = query.executeUpdate();
             transaction.commit();
             session.close();
@@ -76,12 +73,12 @@ public class DepartmentDaoImpl implements DepartmentDao {
     }
 
     @Override
-    public Department update(Department department) {
+    public Account update(Account account) {
         return null;
     }
 
     @Override
-    public boolean delete(String deptName) {
+    public boolean delete(String accName) {
         return false;
     }
 }

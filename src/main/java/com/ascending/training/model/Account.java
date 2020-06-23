@@ -3,20 +3,22 @@ package com.ascending.training.model;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
+
 @Entity
-@Table (name = "accounts")
+@Table(name = "accounts")
 public class Account {
     public Account() {
     }
+
     @Id
     @GeneratedValue
-    @Column (name = "id")
+    @Column(name = "id")
     private long id;
-    @Column (name = "account_type")
+    @Column(name = "account_type")
     private String accountType;
-    @Column (name = "balance")
+    @Column(name = "balance")
     private BigDecimal balance;
-    @Column (name ="created_date")
+    @Column(name = "created_date")
     private Date createDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -41,5 +43,21 @@ public class Account {
     public void setCreateDate(Date createDate) {
 
         this.createDate = createDate;
+    }
+
+    public long getId() {
+        return this.id;
+    }
+
+    public String getAccountType() {
+        return this.accountType;
+    }
+
+    public BigDecimal getBalance() {
+        return this.balance;
+    }
+
+    public Date getCreateDate() {
+        return this.createDate;
     }
 }

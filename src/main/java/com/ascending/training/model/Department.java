@@ -7,12 +7,13 @@ import java.util.Set;
 @Entity
 @Table(name = "departments")
 public class Department {
-    public Department(){}
+    public Department() {
+    }
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long Id;
-
 
 
     @Column(name = "name")
@@ -23,36 +24,42 @@ public class Department {
     private String location;
     @OneToMany(mappedBy = "department")
     private Set<Employee> employees;
-    public void setId(long id){
+
+    public void setId(long id) {
 
         this.Id = id;
     }
 
-    public long getId(){
-        return Id;
+    public long getId() {
+        return this.Id;
     }
-    public void setName(String name){
+
+    public void setName(String name) {
 
         this.name = name;
     }
+
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setDescription(String description){
+    public void setDescription(String description) {
 
         this.description = description;
     }
-    public String getDescription(){
 
-        return description;
+    public String getDescription() {
+
+        return this.description;
     }
-    public void setLocation(String location){
+
+    public void setLocation(String location) {
 
         this.location = location;
     }
-    public String getLocation(){
 
-        return location;
+    public String getLocation() {
+
+        return this.location;
     }
 }

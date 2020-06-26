@@ -1,10 +1,19 @@
 package com.ascending.training;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication(scanBasePackages = {"com.ascending.training"})
-public class ApplicationBootstrap {
+public class ApplicationBootstrap extends SpringBootServletInitializer {
+
+   @Override
+   protected SpringApplicationBuilder configure(SpringApplicationBuilder applicationBuilder){
+       return applicationBuilder.sources(ApplicationBootstrap.class);
+   }
+
     public static void main(String[] args){
-        SpringBootApplication.run(ApplicationBootstrap.class,args);
+        SpringApplication.run(ApplicationBootstrap.class,args);
     }
 }
